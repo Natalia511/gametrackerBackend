@@ -1,22 +1,25 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./src/utils/db');
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./src/utils/db.js";
 
+import juegosRouter from "./src/routes/juegos.js";
+import reseñasRouter from "./src/routes/reseñas.js";
+import usuariosRouter from "./src/routes/usuarios.js";
 
-const cors = require('cors');
 dotenv.config();
-const app = express();
-connectDB();
-app.use(cors());
 
+const app = express();
+app.use(cors());
 app.use(express.json());
 
-app.use("/api/juegos", require("./src/routes/juegos"));
-app.use("/api/reseñas", require("./src/routes/reseñas"));
+connectDB();
 
+app.use("/api", juegosRouter);
+app.use("/api", reseñasRouter);
+app.use("/api", usuariosRouter);
 
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`servidor funcionando en el puerto 3000`);
 });

@@ -1,36 +1,27 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const juegoSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    genre: {
-        type: String,
-        required: true,
-    },  
-    plataformas: {
-        type: [String],
-        required: true,     
-    },
-    portadaUrl: {
-        type: String,
-        required: true,
-    },
-    descripcion: {
-        type: String,   
-        required: true,
-    },
-    fechaLanzamiento: {
-        type: Date, 
-        required: true,
-    },
-    calificacion: {
-        type: Number,   
-        required: true,
-        min: 0,
-        max: 10,
-    },
+  titulo: {
+    type: String,
+    required: true,
+  },
+  genero: {
+    type: String,
+    required: true,
+  },
+  descripcion: {
+    type: String,
+    required: false,
+  },
+  plataforma: {
+    type: String,
+    required: true,
+  },
+  lanzamiento: {
+    type: Number,
+    required: false,
+  },
 });
 
-module.exports = mongoose.model('Juego', juegoSchema);
+const Juego = mongoose.model("Juego", juegoSchema);
+export default Juego;

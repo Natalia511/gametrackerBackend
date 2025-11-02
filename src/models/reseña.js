@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 const reseñaSchema = new mongoose.Schema({
     nombreUsuario: {
         type: String,
@@ -19,3 +21,5 @@ const reseñaSchema = new mongoose.Schema({
         required: true,
     },
 });
+
+export default mongoose.model('Reseña', reseñaSchema);
