@@ -22,4 +22,4 @@ const reseñaSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model('Reseña', reseñaSchema);
+export default mongoose.model('Resena', reseñaSchema);
