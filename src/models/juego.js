@@ -4,11 +4,10 @@
         titulo: { type: String, required: true },
                     descripcion: { type: String, required: true },
                     genero : { type: String, required: true },
-                    categorias: { type: String, required: true },
                     reseñas: [
                       {
                         type: mongoose.Schema.Types.ObjectId,
-                        ref: "resena",
+                        ref: "Resena",
                       },
                     ],
                   });
