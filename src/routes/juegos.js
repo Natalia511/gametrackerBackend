@@ -76,4 +76,21 @@ router.get("/categorias/:genero", async (req, res) => {
   }
 });
 
+router.patch("/:id", async (req, res) => {
+  try {
+    const juegoActualizado = await Juego.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!juegoActualizado) {
+      return res.status(404).json({ message: "Juego no encontrado" });
+    }
+    res.json(juegoActualizado);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
 export default router;
